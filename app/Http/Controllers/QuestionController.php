@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class QuestionController extends Controller
 {
-    /**
-     * Показываем форму создания вопроса.
-     */
     public function create()
     {
         return view('questions.create', [
@@ -18,9 +15,6 @@ class QuestionController extends Controller
         ]);
     }
 
-    /**
-     * Сохраняем новый вопрос.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -41,9 +35,6 @@ class QuestionController extends Controller
             ->with('success', 'Вопрос успешно добавлен.');
     }
 
-    /**
-     * Показываем страницу вопроса и ответы к нему.
-     */
     public function show(Question $question)
     {
         $question->load([
@@ -59,9 +50,6 @@ class QuestionController extends Controller
         ]);
     }
 
-    /**
-     * Разбираем строку тегов и привязываем их к вопросу.
-     */
     private function syncTags(Question $question, string $tagLine): void
     {
         $tagIds = [];
@@ -80,7 +68,6 @@ class QuestionController extends Controller
 
             $slug = $this->makeSlug($tagName);
 
-            // Если slug не получился, просто пропускаем такой тег.
             if ($slug === '') {
                 continue;
             }
@@ -96,9 +83,6 @@ class QuestionController extends Controller
         $question->tags()->sync($tagIds);
     }
 
-    /**
-     * Делаем простой slug, который подходит и для русских тегов.
-     */
     private function makeSlug(string $value): string
     {
         $value = mb_strtolower($value);

@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Промежуточная таблица между вопросами и тегами.
-     */
     public function up(): void
     {
         Schema::create('question_tag', function (Blueprint $table) {
@@ -20,9 +17,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Удаляем промежуточную таблицу.
-     */
     public function down(): void
     {
         Schema::dropIfExists('question_tag');

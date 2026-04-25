@@ -8,17 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    /**
-     * Форма регистрации.
-     */
     public function showRegisterForm()
     {
         return view('auth.register');
     }
 
-    /**
-     * Создаем нового пользователя и сразу авторизуем его.
-     */
     public function register(Request $request)
     {
         $validated = $request->validate([
@@ -31,7 +25,6 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            // Модель User сама захеширует пароль через casts.
             'password' => $validated['password'],
             'bio' => $validated['bio'] ?? null,
         ]);
@@ -43,17 +36,11 @@ class AuthController extends Controller
             ->with('success', 'Регистрация прошла успешно.');
     }
 
-    /**
-     * Форма входа.
-     */
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    /**
-     * Проверяем логин и пароль.
-     */
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -74,9 +61,6 @@ class AuthController extends Controller
             ->with('success', 'Вы вошли в систему.');
     }
 
-    /**
-     * Выход из аккаунта.
-     */
     public function logout(Request $request)
     {
         Auth::logout();

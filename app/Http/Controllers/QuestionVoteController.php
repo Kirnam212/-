@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class QuestionVoteController extends Controller
 {
-    /**
-     * Ставим лайк или дизлайк вопросу.
-     */
     public function store(Request $request, Question $question)
     {
         $validated = $request->validate([
@@ -24,7 +21,6 @@ class QuestionVoteController extends Controller
             ->where('user_id', $userId)
             ->first();
 
-        // Если пользователь нажал ту же кнопку еще раз, убираем голос.
         if ($currentVote && $currentVote->value === $value) {
             $currentVote->delete();
 

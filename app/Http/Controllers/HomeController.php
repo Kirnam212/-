@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Главная страница показывает список вопросов и поиск.
-     */
     public function index(Request $request)
     {
         $search = trim((string) $request->input('search'));
@@ -21,7 +18,6 @@ class HomeController extends Controller
             ->withCount('answers')
             ->latest();
 
-        // Если пользователь ввел текст, ищем по заголовку, описанию и тегам.
         if ($search !== '') {
             $questions->where(function ($query) use ($search) {
                 $query->where('title', 'like', "%{$search}%")
@@ -35,7 +31,6 @@ class HomeController extends Controller
             });
         }
 
-        // Отдельный фильтр по одному выбранному тегу.
         if ($tag !== '') {
             $questions->whereHas('tags', function ($query) use ($tag) {
                 $query->where('slug', $tag);

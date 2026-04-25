@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Добавляем краткое описание пользователя.
-     */
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
@@ -16,9 +13,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Откат изменения.
-     */
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {

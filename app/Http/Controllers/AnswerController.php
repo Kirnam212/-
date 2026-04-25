@@ -7,9 +7,6 @@ use Illuminate\Http\Request;
 
 class AnswerController extends Controller
 {
-    /**
-     * Сохраняем ответ пользователя.
-     */
     public function store(Request $request, Question $question)
     {
         $validated = $request->validate([

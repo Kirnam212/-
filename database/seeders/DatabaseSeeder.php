@@ -11,9 +11,6 @@ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
         User::factory()->create([
@@ -22,7 +19,6 @@ class DatabaseSeeder extends Seeder
             'bio' => 'Люблю домашнюю кухню и простые рецепты.',
         ]);
 
-        // Базовый набор тегов пригодится сразу после установки проекта.
         $tags = [
             'Супы',
             'Мясо',
@@ -43,9 +39,6 @@ class DatabaseSeeder extends Seeder
         }
     }
 
-    /**
-     * Простой slug для русских названий тегов.
-     */
     private function makeSlug(string $value): string
     {
         $value = mb_strtolower($value);

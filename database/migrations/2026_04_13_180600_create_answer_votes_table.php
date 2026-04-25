@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Таблица голосов за ответы.
-     */
     public function up(): void
     {
         Schema::create('answer_votes', function (Blueprint $table) {
@@ -21,9 +18,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Удаляем таблицу голосов за ответы.
-     */
     public function down(): void
     {
         Schema::dropIfExists('answer_votes');

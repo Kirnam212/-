@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Таблица тегов.
-     */
     public function up(): void
     {
         Schema::create('tags', function (Blueprint $table) {
@@ -19,9 +16,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Удаляем таблицу тегов.
-     */
     public function down(): void
     {
         Schema::dropIfExists('tags');

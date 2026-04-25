@@ -8,9 +8,6 @@ use Illuminate\Http\Request;
 
 class AnswerVoteController extends Controller
 {
-    /**
-     * Ставим лайк или дизлайк ответу.
-     */
     public function store(Request $request, Answer $answer)
     {
         $validated = $request->validate([

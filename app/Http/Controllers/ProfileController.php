@@ -6,9 +6,6 @@ use App\Models\User;
 
 class ProfileController extends Controller
 {
-    /**
-     * Показываем профиль и активность пользователя.
-     */
     public function show(User $user)
     {
         $user->load([

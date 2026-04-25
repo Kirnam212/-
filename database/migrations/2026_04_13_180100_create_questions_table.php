@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Таблица вопросов.
-     */
     public function up(): void
     {
         Schema::create('questions', function (Blueprint $table) {
@@ -20,9 +17,6 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Удаляем таблицу вопросов.
-     */
     public function down(): void
     {
         Schema::dropIfExists('questions');
