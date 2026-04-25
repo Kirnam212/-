@@ -1,50 +1,34 @@
-Методичка как запустить сайт
-
-
+## Методичка как запустить сайт
 
 установка зависимостей(ну если надо):
 
+- composer install
 
-composer install
+Делаем по желание Бд:
 
-
-Делаем по желание  Бд:
-
-
-New-Item database\database.sqlite -ItemType File
-
+- New-Item database\database.sqlite -ItemType File
 
 Генерируем ключ для .env:
 
-
-php artisan key:generate
-
+- php artisan key:generate
 
 Выполняем миграции:
 
-
-php artisan migrate
-
+- php artisan migrate
 
 Тоже делаем(для тестов):
 
-
-php artisan db:seed
-
+- php artisan db:seed
 
 ## Теперь запуск самого проекта
 
-1) Запуск сервера(потому что только так работает):
+1. Запуск сервера(потому что только так работает):
 
+- php -S 0.0.0.0:8088 -t public
 
-php -S 0.0.0.0:8088 -t public
+2. Открой сайт в браузере:
 
-
-2) Открой сайт в браузере:
-
-
-http://127.0.0.1:8088
-
+- http://127.0.0.1:8088
 
 Важно:
 
@@ -54,18 +38,12 @@ http://127.0.0.1:8088
 
 ## Альтернатива через Artisan
 
-
-php artisan serve --host=127.0.0.1 --port=8088
-
+-php artisan serve --host=127.0.0.1 --port=8088
 
 Если порт занят, меняй его, например на `8090`, и открой:
 
-
-http://127.0.0.1:8090
-
+-http://127.0.0.1:8090
 
 ## ВАЖНО!
-используем через url  127
 
-
-
+используем через url - 127
