@@ -20,13 +20,13 @@ class HomeController extends Controller
 
         if ($search !== '') {
             $questions->where(function ($query) use ($search) {
-                $query->where('title', 'like', "%{$search}%")
-                    ->orWhere('body', 'like', "%{$search}%")
-                    ->orWhereHas('answers', function ($answerQuery) use ($search) {
-                        $answerQuery->where('body', 'like', "%{$search}%");
+                $query->where('title', 'like', "%{$search}%") //  заголовок вопроса
+                    ->orWhere('body', 'like', "%{$search}%") // текст вопроса
+                    ->orWhereHas('answers', function ($answerQuery) use ($search) { // 
+                        $answerQuery->where('body', 'like', "%{$search}%"); //  текст ответа
                     })
-                    ->orWhereHas('tags', function ($tagQuery) use ($search) {
-                        $tagQuery->where('name', 'like', "%{$search}%");
+                    ->orWhereHas('tags', function ($tagQuery) use ($search) { // ишем связанные теги 
+                        $tagQuery->where('name', 'like', "%{$search}%"); // находим именно назваеме тега
                     });
             });
         }
